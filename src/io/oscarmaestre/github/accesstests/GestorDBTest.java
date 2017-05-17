@@ -1,7 +1,5 @@
 package io.oscarmaestre.github.accesstests;
 
-import static org.junit.Assert.*;
-
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,16 +28,18 @@ public class GestorDBTest {
 		gestorFechas.set(Calendar.HOUR_OF_DAY, 0);
 		
 		int mesDeHoy=gestorFechas.get(Calendar.MONTH);
-		//Ojo, los meses se devuelve en valores de 0(Enero) a 11 (Diciembre)
-		//por eso sumamos 1
-		mesDeHoy=mesDeHoy+1;
+		
 		int diaDeHoy=gestorFechas.get(Calendar.DAY_OF_MONTH);
-		System.out.println("Hoy es (DD/MM):"+diaDeHoy+"/"+mesDeHoy);
+		//Ojo, los meses van en valores de 0(Enero) a 11 (Diciembre)
+		//por eso sumamos 1
+			
+		System.out.println("Hoy es (DD/MM):"+diaDeHoy+"/"+(mesDeHoy+1));
 		while (resultados.next()){
 			String apellidos=resultados.getString("apellidos");
 			Date fechaNacimiento=resultados.getDate("fechanacimiento");
 			int numeroDeMes=fechaNacimiento.getMonth();
 			int numeroDeDia=fechaNacimiento.getDate();
+			
 			if ( (numeroDeMes==mesDeHoy) && (numeroDeDia==diaDeHoy) ){
 				System.out.println(apellidos);
 			}

@@ -19,4 +19,12 @@ public class GestorDB {
 		return resultados;
 	}
 	
+	public ResultSet getCumplenHoy() throws SQLException{
+		String sql="select * from gaseosa "+
+			"where month(fechanacimiento)=month(date()) "+
+			" and day(fechanacimiento)=day(date());";
+		ResultSet resultados;
+		resultados=ejecutarConsulta(sql);
+		return resultados;
+	}
 }
